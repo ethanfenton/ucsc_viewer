@@ -30,6 +30,7 @@ priority 1
     longLabel FOS LSD (merged RPKM)
     type bigWig
     color 228,26,28
+    graphType line
 
     track FOS_JRT_ov
     parent FOS_overlay
@@ -38,6 +39,7 @@ priority 1
     longLabel FOS JRT (merged RPKM)
     type bigWig
     color 55,126,184
+    graphType line
 
     track FOS_VEH_ov
     parent FOS_overlay
@@ -46,6 +48,7 @@ priority 1
     longLabel FOS VEH (merged RPKM)
     type bigWig
     color 136,136,136
+    graphType line
 
 # --- FOS individual (hidden by default, autoscaleGroup fos_igg) ---
 track FOS_LSD_indiv
@@ -171,6 +174,7 @@ priority 1
     longLabel H3K27Ac LSD (merged RPKM)
     type bigWig
     color 228,26,28
+    graphType line
 
     track K27Ac_JRT_ov
     parent K27Ac_overlay
@@ -179,6 +183,7 @@ priority 1
     longLabel H3K27Ac JRT (merged RPKM)
     type bigWig
     color 55,126,184
+    graphType line
 
     track K27Ac_VEH_ov
     parent K27Ac_overlay
@@ -187,6 +192,7 @@ priority 1
     longLabel H3K27Ac VEH (merged RPKM)
     type bigWig
     color 136,136,136
+    graphType line
 
 # --- K27Ac individual (hidden by default, autoscaleGroup k27ac) ---
 track K27Ac_LSD_indiv
