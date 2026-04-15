@@ -1,10 +1,17 @@
 # ============================================================
-# FOS — overlay (LSD / JRT / VEH), group autoscale
+# FOS — superTrack containing overlay + individual tracks
 # ============================================================
+track FOS_super
+superTrack on show
+shortLabel FOS CUT&RUN
+longLabel FOS CUT&RUN Signal (merged RPKM)
+priority 1
+
 track FOS_overlay
+parent FOS_super
 container multiWig
-shortLabel FOS Signal
-longLabel FOS CUT&RUN — LSD vs JRT vs VEH (merged RPKM)
+shortLabel FOS Overlay
+longLabel FOS CUT&RUN — LSD vs JRT vs VEH (overlay, merged RPKM)
 type bigWig
 visibility full
 aggregate transparentOverlay
@@ -15,7 +22,7 @@ windowingFunction mean
 maxHeightPixels 100:75:8
 priority 1
 
-    track FOS_LSD
+    track FOS_LSD_ov
     parent FOS_overlay
     bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/FOS_LSD_mtn_rpkm.bw
     shortLabel FOS LSD
@@ -23,7 +30,7 @@ priority 1
     type bigWig
     color 228,26,28
 
-    track FOS_JRT
+    track FOS_JRT_ov
     parent FOS_overlay
     bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/FOS_JRT_mtn_rpkm.bw
     shortLabel FOS JRT
@@ -31,7 +38,7 @@ priority 1
     type bigWig
     color 55,126,184
 
-    track FOS_VEH
+    track FOS_VEH_ov
     parent FOS_overlay
     bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/FOS_VEH_mtn_rpkm.bw
     shortLabel FOS VEH
@@ -39,13 +46,65 @@ priority 1
     type bigWig
     color 136,136,136
 
+track FOS_LSD_indiv
+parent FOS_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/FOS_LSD_mtn_rpkm.bw
+shortLabel FOS LSD (indiv)
+longLabel FOS LSD individual (merged RPKM)
+type bigWig
+visibility hide
+color 228,26,28
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 2
+
+track FOS_JRT_indiv
+parent FOS_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/FOS_JRT_mtn_rpkm.bw
+shortLabel FOS JRT (indiv)
+longLabel FOS JRT individual (merged RPKM)
+type bigWig
+visibility hide
+color 55,126,184
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 3
+
+track FOS_VEH_indiv
+parent FOS_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/FOS_VEH_mtn_rpkm.bw
+shortLabel FOS VEH (indiv)
+longLabel FOS VEH individual (merged RPKM)
+type bigWig
+visibility hide
+color 136,136,136
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 4
+
 # ============================================================
-# H3K27Ac — overlay (LSD / JRT / VEH), group autoscale
+# H3K27Ac — superTrack containing overlay + individual tracks
 # ============================================================
+track K27Ac_super
+superTrack on show
+shortLabel H3K27Ac CUT&RUN
+longLabel H3K27Ac CUT&RUN Signal (merged RPKM)
+priority 2
+
 track K27Ac_overlay
+parent K27Ac_super
 container multiWig
-shortLabel H3K27Ac Signal
-longLabel H3K27Ac CUT&RUN — LSD vs JRT vs VEH (merged RPKM)
+shortLabel K27Ac Overlay
+longLabel H3K27Ac CUT&RUN — LSD vs JRT vs VEH (overlay, merged RPKM)
 type bigWig
 visibility full
 aggregate transparentOverlay
@@ -54,9 +113,9 @@ autoScale group
 alwaysZero on
 windowingFunction mean
 maxHeightPixels 100:75:8
-priority 2
+priority 1
 
-    track K27Ac_LSD
+    track K27Ac_LSD_ov
     parent K27Ac_overlay
     bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/H3K27Ac_LSD_mtn_rpkm.bw
     shortLabel K27Ac LSD
@@ -64,7 +123,7 @@ priority 2
     type bigWig
     color 228,26,28
 
-    track K27Ac_JRT
+    track K27Ac_JRT_ov
     parent K27Ac_overlay
     bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/H3K27Ac_JRT_mtn_rpkm.bw
     shortLabel K27Ac JRT
@@ -72,7 +131,7 @@ priority 2
     type bigWig
     color 55,126,184
 
-    track K27Ac_VEH
+    track K27Ac_VEH_ov
     parent K27Ac_overlay
     bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/H3K27Ac_VEH_mtn_rpkm.bw
     shortLabel K27Ac VEH
@@ -80,43 +139,93 @@ priority 2
     type bigWig
     color 136,136,136
 
-# ============================================================
-# IGG — overlay (LSD / JRT / VEH), group autoscale
-# ============================================================
-track IGG_overlay
-container multiWig
-shortLabel IGG Control
-longLabel IGG Negative Control — LSD vs JRT vs VEH (merged RPKM)
+track K27Ac_LSD_indiv
+parent K27Ac_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/H3K27Ac_LSD_mtn_rpkm.bw
+shortLabel K27Ac LSD (indiv)
+longLabel H3K27Ac LSD individual (merged RPKM)
 type bigWig
-visibility full
-aggregate transparentOverlay
-showSubtrackColorOnUi on
-autoScale group
+visibility hide
+color 228,26,28
+autoScale on
+autoscaleGroup k27ac
 alwaysZero on
 windowingFunction mean
-maxHeightPixels 100:75:8
+maxHeightPixels 100:60:8
+priority 2
+
+track K27Ac_JRT_indiv
+parent K27Ac_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/H3K27Ac_JRT_mtn_rpkm.bw
+shortLabel K27Ac JRT (indiv)
+longLabel H3K27Ac JRT individual (merged RPKM)
+type bigWig
+visibility hide
+color 55,126,184
+autoScale on
+autoscaleGroup k27ac
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
 priority 3
 
-    track IGG_LSD
-    parent IGG_overlay
-    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/IGG_LSD_mtn_rpkm.bw
-    shortLabel IGG LSD
-    longLabel IGG LSD (merged RPKM)
-    type bigWig
-    color 228,26,28
+track K27Ac_VEH_indiv
+parent K27Ac_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/H3K27Ac_VEH_mtn_rpkm.bw
+shortLabel K27Ac VEH (indiv)
+longLabel H3K27Ac VEH individual (merged RPKM)
+type bigWig
+visibility hide
+color 136,136,136
+autoScale on
+autoscaleGroup k27ac
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 4
 
-    track IGG_JRT
-    parent IGG_overlay
-    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/IGG_JRT_mtn_rpkm.bw
-    shortLabel IGG JRT
-    longLabel IGG JRT (merged RPKM)
-    type bigWig
-    color 55,126,184
+# ============================================================
+# IGG — individual tracks only, scale linked to FOS individual
+# (autoscaleGroup fos_igg — toggle on FOS individual tracks to see shared scale)
+# ============================================================
+track IGG_LSD
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/IGG_LSD_mtn_rpkm.bw
+shortLabel IGG LSD
+longLabel IGG LSD Negative Control (merged RPKM)
+type bigWig
+visibility full
+color 228,26,28
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 3
 
-    track IGG_VEH
-    parent IGG_overlay
-    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/IGG_VEH_mtn_rpkm.bw
-    shortLabel IGG VEH
-    longLabel IGG VEH (merged RPKM)
-    type bigWig
-    color 136,136,136
+track IGG_JRT
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/IGG_JRT_mtn_rpkm.bw
+shortLabel IGG JRT
+longLabel IGG JRT Negative Control (merged RPKM)
+type bigWig
+visibility full
+color 55,126,184
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 4
+
+track IGG_VEH
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/IGG_VEH_mtn_rpkm.bw
+shortLabel IGG VEH
+longLabel IGG VEH Negative Control (merged RPKM)
+type bigWig
+visibility full
+color 136,136,136
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 5
