@@ -1,0 +1,5 @@
+hub LSD_JRT_CUTRUN
+shortLabel LSD JRT CUT&RUN
+longLabel LSD JRT CUT&RUN Chromatin Profiling (mm39)
+genomesFile genomes.txt
+email ethanfenton27@gmail.com
