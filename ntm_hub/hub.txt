@@ -1,0 +1,5 @@
+hub LSD_JRT_CUTRUN_ntm
+shortLabel LSD JRT CUT&RUN (norm→merge)
+longLabel LSD JRT CUT&RUN — Normalize Then Merge RPKM (mm39)
+genomesFile genomes.txt
+email ethanfenton27@gmail.com

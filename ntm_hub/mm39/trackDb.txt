@@ -1,0 +1,242 @@
+# ============================================================
+# FOS + IGG — single superTrack so autoscaleGroup links them
+# Normalize-Then-Merge RPKM tracks
+# ============================================================
+track FOS_IGG_super
+superTrack on show
+shortLabel FOS + IGG CUT&RUN
+longLabel FOS CUT&RUN Signal and IGG Control — norm→merge RPKM
+priority 1
+
+# --- FOS overlay (internal autoScale group) ---
+track FOS_overlay
+parent FOS_IGG_super
+container multiWig
+shortLabel FOS Overlay
+longLabel FOS CUT&RUN — LSD vs JRT vs VEH (overlay, norm→merge RPKM)
+type bigWig
+visibility full
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+autoScale group
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:75:8
+priority 1
+
+    track FOS_LSD_ov
+    parent FOS_overlay
+    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/FOS_LSD_ntm_rpkm.bw
+    shortLabel FOS LSD
+    longLabel FOS LSD (norm→merge RPKM)
+    type bigWig
+    color 228,26,28
+    graphType line
+
+    track FOS_JRT_ov
+    parent FOS_overlay
+    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/FOS_JRT_ntm_rpkm.bw
+    shortLabel FOS JRT
+    longLabel FOS JRT (norm→merge RPKM)
+    type bigWig
+    color 55,126,184
+    graphType line
+
+    track FOS_VEH_ov
+    parent FOS_overlay
+    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/FOS_VEH_ntm_rpkm.bw
+    shortLabel FOS VEH
+    longLabel FOS VEH (norm→merge RPKM)
+    type bigWig
+    color 136,136,136
+    graphType line
+
+# --- FOS individual (hidden by default, autoscaleGroup fos_igg) ---
+track FOS_LSD_indiv
+parent FOS_IGG_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/FOS_LSD_ntm_rpkm.bw
+shortLabel FOS LSD (indiv)
+longLabel FOS LSD individual (norm→merge RPKM)
+type bigWig
+visibility hide
+color 228,26,28
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 2
+
+track FOS_JRT_indiv
+parent FOS_IGG_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/FOS_JRT_ntm_rpkm.bw
+shortLabel FOS JRT (indiv)
+longLabel FOS JRT individual (norm→merge RPKM)
+type bigWig
+visibility hide
+color 55,126,184
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 3
+
+track FOS_VEH_indiv
+parent FOS_IGG_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/FOS_VEH_ntm_rpkm.bw
+shortLabel FOS VEH (indiv)
+longLabel FOS VEH individual (norm→merge RPKM)
+type bigWig
+visibility hide
+color 136,136,136
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 4
+
+# --- IGG individual (visible, same autoscaleGroup as FOS individual) ---
+track IGG_LSD
+parent FOS_IGG_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/IGG_LSD_ntm_rpkm.bw
+shortLabel IGG LSD
+longLabel IGG LSD Negative Control (norm→merge RPKM)
+type bigWig
+visibility full
+color 228,26,28
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 5
+
+track IGG_JRT
+parent FOS_IGG_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/IGG_JRT_ntm_rpkm.bw
+shortLabel IGG JRT
+longLabel IGG JRT Negative Control (norm→merge RPKM)
+type bigWig
+visibility full
+color 55,126,184
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 6
+
+track IGG_VEH
+parent FOS_IGG_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/IGG_VEH_ntm_rpkm.bw
+shortLabel IGG VEH
+longLabel IGG VEH Negative Control (norm→merge RPKM)
+type bigWig
+visibility full
+color 136,136,136
+autoScale on
+autoscaleGroup fos_igg
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 7
+
+# ============================================================
+# H3K27Ac — separate superTrack, overlay + individual tracks
+# ============================================================
+track K27Ac_super
+superTrack on show
+shortLabel H3K27Ac CUT&RUN
+longLabel H3K27Ac CUT&RUN Signal — norm→merge RPKM
+priority 2
+
+# --- K27Ac overlay (internal autoScale group) ---
+track K27Ac_overlay
+parent K27Ac_super
+container multiWig
+shortLabel K27Ac Overlay
+longLabel H3K27Ac CUT&RUN — LSD vs JRT vs VEH (overlay, norm→merge RPKM)
+type bigWig
+visibility full
+aggregate transparentOverlay
+showSubtrackColorOnUi on
+autoScale group
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:75:8
+priority 1
+
+    track K27Ac_LSD_ov
+    parent K27Ac_overlay
+    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/H3K27Ac_LSD_ntm_rpkm.bw
+    shortLabel K27Ac LSD
+    longLabel H3K27Ac LSD (norm→merge RPKM)
+    type bigWig
+    color 228,26,28
+    graphType line
+
+    track K27Ac_JRT_ov
+    parent K27Ac_overlay
+    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/H3K27Ac_JRT_ntm_rpkm.bw
+    shortLabel K27Ac JRT
+    longLabel H3K27Ac JRT (norm→merge RPKM)
+    type bigWig
+    color 55,126,184
+    graphType line
+
+    track K27Ac_VEH_ov
+    parent K27Ac_overlay
+    bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/H3K27Ac_VEH_ntm_rpkm.bw
+    shortLabel K27Ac VEH
+    longLabel H3K27Ac VEH (norm→merge RPKM)
+    type bigWig
+    color 136,136,136
+    graphType line
+
+# --- K27Ac individual (hidden by default, autoscaleGroup k27ac) ---
+track K27Ac_LSD_indiv
+parent K27Ac_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/H3K27Ac_LSD_ntm_rpkm.bw
+shortLabel K27Ac LSD (indiv)
+longLabel H3K27Ac LSD individual (norm→merge RPKM)
+type bigWig
+visibility hide
+color 228,26,28
+autoScale on
+autoscaleGroup k27ac
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 2
+
+track K27Ac_JRT_indiv
+parent K27Ac_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/H3K27Ac_JRT_ntm_rpkm.bw
+shortLabel K27Ac JRT (indiv)
+longLabel H3K27Ac JRT individual (norm→merge RPKM)
+type bigWig
+visibility hide
+color 55,126,184
+autoScale on
+autoscaleGroup k27ac
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 3
+
+track K27Ac_VEH_indiv
+parent K27Ac_super
+bigDataUrl https://storage.googleapis.com/ef_cutrun_viewer/ntm_rpkm/H3K27Ac_VEH_ntm_rpkm.bw
+shortLabel K27Ac VEH (indiv)
+longLabel H3K27Ac VEH individual (norm→merge RPKM)
+type bigWig
+visibility hide
+color 136,136,136
+autoScale on
+autoscaleGroup k27ac
+alwaysZero on
+windowingFunction mean
+maxHeightPixels 100:60:8
+priority 4
